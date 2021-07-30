@@ -6,9 +6,16 @@ class MoviesController < ApplicationController
     render json: movies
   end
 
+# app/controllers/movies_controller.rb
   def show
     movie = Movie.find(params[:id])
     render json: movie
+  end 
+
+  #Explicitly stating that we want to use a serializer
+  def summary 
+    movie = Movie.find(params[:id])
+    render json: movie, serializer: MovieSummarySerializerSerializer
   end
 
   private
